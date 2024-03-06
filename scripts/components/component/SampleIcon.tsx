@@ -35,6 +35,8 @@ export default class SampleIcon extends Component<Props, State> {
                 return require('../../../resources/icon_images/post.png');
             case SampleIconType.Picture:
                 return require('../../../resources/icon_images/picture.png');
+            case SampleIconType.Hamburger:
+                return require('../../../resources/icon_images/hamburger.png');
             default:
                 return require('../../../resources/icon_images/timeline.png');
         }

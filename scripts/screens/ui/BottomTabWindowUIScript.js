@@ -75,7 +75,7 @@ class BottomTabBar extends Component {
                             target: route.key,
                         });
                     };
-                    const iconColor = isFocused ? '#3F51B5' : '#EEEEEE';
+                    const iconColor = isFocused ? '#3F51B5' : '#AAAAAA';
                     const iconSize = 25;
                     return (
                         <TouchableOpacity
