@@ -32,6 +32,7 @@ export default class SampleAvatar extends Component<Props, State> {
     //レンダリング
     render() {
         //let iconUrl = this.props.iconUrl ?? this.state.iconUrl;
+        //let iconUrl = this.props.iconUrl; //暫定
         let iconUrl = 'https://picsum.photos/350/165?random' //暫定
         return (
             <View style={styles.container}>
