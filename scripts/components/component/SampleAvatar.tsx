@@ -3,9 +3,10 @@
     Interfaceの作成は省略
 */
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Props, State } from '../interface/SampleAvatarInterface';
 import { Avatar } from 'react-native-elements';
+import { NavigationScreenProp, NavigationState, NavigationParams } from 'react-navigation';
 
 
 export default class SampleAvatar extends Component<Props, State> {
@@ -13,8 +14,8 @@ export default class SampleAvatar extends Component<Props, State> {
         super(props);
     
         this.state = {
-            // iconUrl: this.props.iconUrl,
-            iconUrl: require('../../../resources/icon_images/post.png'), //暫定
+            iconUrl: this.props.iconUrl,
+            //iconUrl: require('../../../resources/icon_images/post.png'), //暫定
         };
     }
 
@@ -24,8 +25,11 @@ export default class SampleAvatar extends Component<Props, State> {
     //TODO
     //アバター押下時の処理 => プロフィール設定画面遷移
     onPress() {
-        if(this.props.onPress){
+        //propsで押下イベントが渡ってきたとき & 画面遷移がONになっているとき
+        if(this.props.onPress && this.props.isSetNavigateUserWindowAction){
             this.props.onPress();
+            console.log('XXX------------------------------------', this.props)
+            this.props.navigation?.navigate('EditProfileWindow');
         }
     };
 

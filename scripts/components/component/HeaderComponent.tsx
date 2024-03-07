@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import { Props, State } from '../interface/HeaderComponentInterface';
+import { NavigationScreenProp, NavigationState, NavigationParams } from 'react-navigation';
 /* component */
 import SampleAvatar from './SampleAvatar';
 import SampleIcon from '../../components/component/SampleIcon';
 /* enum */
 import SampleIconType from '../../enum/SampleIconType';
+import ScreenNameType from '../../enum/ScreenNameType';
 
 export default class HeaderComponent extends Component<Props, State> {
     //Headerのデフォルト詳細表示設定
@@ -18,12 +20,26 @@ export default class HeaderComponent extends Component<Props, State> {
         super(props);
     }
 
+    //アバタータップ時
+    onPressAvatar = () => {
+        console.log('aaaaa')
+        this.props.navigation?.navigate(ScreenNameType.EditProfileWindow);
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 {/* アバター */}
                 <View style={styles.leftArea}>
-                    <SampleAvatar />
+                    {this.props.isShowAvatar ?
+                    <TouchableOpacity>
+                        <SampleAvatar
+                            navigation={this.props.navigation}
+                            userId={'ID'}
+                            isSetNavigateUserWindowAction={true}
+                            onPress={() => this.onPressAvatar()}/>
+                    </TouchableOpacity>
+                    : <></>}
                 </View>
                 {/* 見出し */}
                 <View style={styles.centerArea}>

@@ -3,12 +3,16 @@ import { NavigationContainer } from '@react-navigation/native';
 /* navigator */
 import { createStackNavigator } from '@react-navigation/stack';
 import BottomTabNavigator from '../screens/ui/BottomTabWindowUIScript';
-
 /* enum */
 import ScreenNameType from '../enum/ScreenNameType';
 /* screen */
 import { TimelineWindowUIScript } from '../screens/ui/TimeLineWindowUIScript';
 import { PostWindowUIScript } from '../screens/ui/PostWindowUIScript';
+import { EditProfileWindowUIScript } from '../screens/ui/EditProfileWindowUIScript';
+/* redux */
+import store, { persistor } from '../redux/store';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 
 /**
@@ -49,6 +53,11 @@ class AppStackNavigator extends Component {
                     component={BottomTabNavigator}
                     options={({ navigation, route }) => ({ headerShown: false })}
                 />
+                <AppStack.Screen
+                    name={ScreenNameType.EditProfileWindow}
+                    component={EditProfileWindowUIScript}
+                    options={({ navigation, route }) => ({ headerShown: false })}
+                />
             </AppStack.Navigator>
         )
     }
@@ -81,10 +90,13 @@ export default class Naviation extends Component {
             //     </NavigationContainer>
             //   </PersistGate>
             // </Provider>
-
-            <NavigationContainer>
-                <SwitchStackNavigator />
-            </NavigationContainer>
+            <Provider store={store}>
+                <PersistGate loading={null} persistor={persistor}>
+                    <NavigationContainer>
+                        <SwitchStackNavigator />
+                    </NavigationContainer>
+                </PersistGate>
+            </Provider>
         );
     }
   }

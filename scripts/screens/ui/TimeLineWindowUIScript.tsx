@@ -25,6 +25,7 @@ export class TimelineWindowUIScript extends Component<Props, State> {
                 <HeaderComponent
                     title={title}
                     isShowAvatar={true}
+                    navigation={this.props.navigation}
                 />
                 <ScrollView>
                     {/* 投稿カードリスト(暫定) */}

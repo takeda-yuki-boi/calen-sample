@@ -24,6 +24,7 @@ export class PostWindowUIScript extends Component<Props, State> {
                 <HeaderComponent
                     title={title}
                     isShowAvatar={true}
+                    navigation={this.props.navigation}
                 />
                 <Text>これは投稿画面です</Text>
             </SampleSafeAreaView>

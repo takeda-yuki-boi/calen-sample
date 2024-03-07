@@ -40,7 +40,9 @@ export default class PostCard extends Component<Props, State> {
                 <Image style={{width: '100%', height: 150}} source={{uri: this.props.imageUrl}}/>
                 <View style={styles.cardContet}>
                     <View style={styles.cardAvatar}>
-                        <SampleAvatar />
+                        <SampleAvatar
+                            isSetNavigateUserWindowAction={false}
+                        />
                     </View>
                     <View style={styles.cardTitle}>
                         <Text>{this.props.title}</Text>
